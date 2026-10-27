@@ -1,0 +1,1009 @@
+/* =========================================================================
+   Passo Alto — styles.css
+   Nome: Débora Cristina Gonçalves da Silva  RM: RM575926  Frame: v12
+   v12 — P2 Terra · T4 Anton/Karla · S1 · D4 Amplo
+   ========================================================================= */
+
+/* ----------  Paleta P2 Terra  ----------
+   escura      #3A2219   destaque     #E3784A
+   fundo       #FBF3EA   texto        #2A1811
+   secundário  #7A5E52   borda        #EEDDCF
+   claro hero  #F6DCCB
+   cards       #F8EBC4 (litoral) · #DDEFD6 (cachoeira) · #D9E9F4 (noturna)
+   selos       #F2C14E (últimas) · #A7D49B (novo) · #9CC9E3 (iniciante)
+*/
+
+/* ----------  Base  ---------- */
+body {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  background: #fbf3ea;
+  color: #2a1811;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  color: #3a2219;
+}
+
+h2 {
+  font-size: 52px;
+  line-height: 57px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #e3784a;
+  outline-offset: 3px;
+}
+
+/* ----------  Layout geral (D4 Amplo)  ---------- */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 146px;
+  padding-bottom: 146px;
+}
+
+main > section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ----------  Ordem das seções (S1)  ---------- */
+main > [data-section="hero"] {
+  order: 0;
+}
+main > [data-section="roteiros"] {
+  order: 1;
+}
+main > [data-section="saidas"] {
+  order: 2;
+}
+main > [data-section="passos"] {
+  order: 3;
+}
+main > [data-section="chamada"] {
+  order: 4;
+}
+main > [data-section="inscricao"] {
+  order: 5;
+}
+main > [data-section="depoimentos"] {
+  order: 6;
+}
+
+/* 1. Topo */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 31px 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #3a2219;
+}
+
+.marca__icone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: #e3784a;
+  border-radius: 10px;
+  font-family: "Anton", sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.marca__nome {
+  font-family: "Anton", sans-serif;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.menu__lista {
+  display: flex;
+  gap: 32px;
+}
+
+.menu__lista a {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a2219;
+  border-bottom: 2px solid transparent;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.menu__lista a:hover {
+  color: #e3784a;
+  border-bottom-color: #e3784a;
+}
+
+.topo__acoes {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================================================================
+   2. Botões
+   ========================================================================= */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 26px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3a2219;
+  background: transparent;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.btn--principal {
+  background: #e3784a;
+  border-color: #e3784a;
+}
+
+.btn--principal:hover {
+  background: #cf6337;
+  border-color: #cf6337;
+}
+
+.btn--contorno {
+  border-color: #3a2219;
+}
+
+.btn--contorno:hover {
+  background: #3a2219;
+  color: #fbf3ea;
+}
+
+.btn--escuro {
+  background: #3a2219;
+  border-color: #3a2219;
+  color: #fbf3ea;
+}
+
+.btn--escuro:hover {
+  background: #e3784a;
+  border-color: #e3784a;
+  color: #3a2219;
+}
+
+.btn--pequeno {
+  padding: 10px 18px;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.btn--largo {
+  width: 100%;
+}
+
+.link-seta {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #e3784a;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a2219;
+  transition: color 0.2s;
+}
+
+.link-seta:hover {
+  color: #e3784a;
+}
+
+/* 3. Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 586px 400px;
+  grid-template-areas:
+    "texto destaque"
+    "numeros numeros";
+  column-gap: 48px;
+  row-gap: 48px;
+  padding: 83px;
+  background: #f6dccb;
+  border-radius: 32px;
+}
+
+.hero__texto {
+  grid-area: texto;
+}
+
+.hero__chamada {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  background: #ffffff;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #3a2219;
+}
+
+.hero__titulo {
+  font-size: 128px;
+  line-height: 115px;
+  text-transform: uppercase;
+}
+
+.hero__lead {
+  max-width: 520px;
+  padding-top: 24px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #7a5e52;
+}
+
+.hero__botoes {
+  display: flex;
+  gap: 12px;
+  padding-top: 32px;
+}
+
+/* Card "Próxima saída" */
+.destaque {
+  grid-area: destaque;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 42px;
+  background: #ffffff;
+  border-radius: 24px;
+}
+
+.destaque__rotulo {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 1.04px;
+  text-transform: uppercase;
+  color: #7a5e52;
+}
+
+.destaque__emoji {
+  display: block;
+  font-size: 88px;
+  line-height: 88px;
+}
+
+.destaque__titulo {
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.destaque__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #eeddcf;
+}
+
+.destaque__info li {
+  display: flex;
+  justify-content: space-between;
+  color: #2a1811;
+}
+
+.destaque__info strong {
+  font-weight: 500;
+  color: #7a5e52;
+}
+
+/* Números */
+.numeros {
+  grid-area: numeros;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 2px solid #3a2219;
+}
+
+.numeros__item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.numeros__valor {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 48px;
+  color: #3a2219;
+}
+
+.numeros__texto {
+  font-size: 15px;
+  line-height: 22px;
+  color: #7a5e52;
+}
+
+/* 4. Cabeçalho das seções */
+.cabecalho {
+  max-width: 640px;
+}
+
+.cabecalho__lead {
+  padding-top: 8px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #7a5e52;
+}
+
+.cabecalho--lado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: none;
+}
+
+.cabecalho--lado h2 {
+  padding-bottom: 8px;
+}
+
+/* 5. Roteiros (grid com áreas) */
+.roteiros__grade {
+  display: grid;
+  grid-template-columns: 580px 290px 290px;
+  grid-template-areas:
+    "serra litoral cachoeira"
+    "serra noturna noturna";
+  gap: 20px;
+  margin-top: 52px;
+}
+
+.roteiro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 36px;
+  border-radius: 24px;
+  color: #7a5e52;
+}
+
+.roteiro--serra {
+  grid-area: serra;
+  justify-content: flex-end;
+  min-height: 440px;
+  background: #3a2219;
+  color: #f6dccb;
+}
+
+.roteiro--litoral {
+  grid-area: litoral;
+  background: #f8ebc4;
+}
+
+.roteiro--cachoeira {
+  grid-area: cachoeira;
+  background: #ddefd6;
+}
+
+.roteiro--noturna {
+  grid-area: noturna;
+  background: #d9e9f4;
+}
+
+.roteiro__emoji {
+  display: block;
+  padding-bottom: 16px;
+  font-size: 48px;
+  line-height: 48px;
+}
+
+.roteiro h3 {
+  font-size: 28px;
+  line-height: 31px;
+}
+
+.roteiro p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.roteiro .link-seta {
+  margin-top: 8px;
+}
+
+.roteiro--serra .roteiro__emoji {
+  font-size: 96px;
+  line-height: 96px;
+}
+
+.roteiro--serra h3 {
+  font-size: 48px;
+  line-height: 53px;
+  color: #fbf3ea;
+}
+
+.roteiro--serra p {
+  max-width: 420px;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.roteiro--serra .link-seta {
+  color: #fbf3ea;
+}
+
+.roteiro--serra .link-seta:hover {
+  color: #e3784a;
+}
+
+/*  6. Próximas saídas */
+.saidas__lista {
+  margin-top: 52px;
+  border-top: 2px solid #3a2219;
+}
+
+.saida {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 16px;
+  border-bottom: 1px solid #eeddcf;
+  transition: background-color 0.2s;
+}
+
+.saida:hover {
+  background: rgba(246, 220, 203, 0.4);
+}
+
+.saida__data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 72px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #7a5e52;
+}
+
+.saida__data strong {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  color: #3a2219;
+}
+
+.saida__emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: #f6dccb;
+  border-radius: 16px;
+  font-size: 28px;
+  line-height: 42px;
+}
+
+.saida__info {
+  flex-grow: 1;
+}
+
+.saida__info h3 {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.saida__meta {
+  font-size: 15px;
+  line-height: 22px;
+  color: #7a5e52;
+}
+
+.saida__preco {
+  flex-shrink: 0;
+  width: 100px;
+  font-family: "Anton", sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: right;
+  color: #3a2219;
+}
+
+.saida .btn {
+  flex-shrink: 0;
+}
+
+/* Selos */
+.selo {
+  flex-shrink: 0;
+  width: 132px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.48px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #3a2219;
+}
+
+.selo--ultimas {
+  background: #f2c14e;
+}
+
+.selo--novo {
+  background: #a7d49b;
+}
+
+.selo--iniciante {
+  background: #9cc9e3;
+}
+
+/* 7. Como funciona */
+.passos {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 48px;
+}
+
+.passos__lista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.passo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 31px;
+  border-top: 4px solid #e3784a;
+}
+
+.passo__numero {
+  display: block;
+  font-family: "Anton", sans-serif;
+  font-size: 64px;
+  line-height: 64px;
+  color: #3a2219;
+}
+
+.passo h3 {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.passo p {
+  color: #7a5e52;
+}
+
+/* 8. Chamada */
+.chamada {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 73px;
+  background: #3a2219;
+  border-radius: 32px;
+}
+
+.chamada__texto {
+  flex-grow: 1;
+}
+
+.chamada h2 {
+  color: #fbf3ea;
+}
+
+.chamada__texto p {
+  padding-top: 8px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #f6dccb;
+}
+
+.chamada__lista {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 10px;
+  width: 276px;
+}
+
+.chamada__lista li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fbf3ea;
+}
+
+.chamada__check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: #e3784a;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 20px;
+  color: #3a2219;
+}
+
+.chamada .btn {
+  flex-shrink: 0;
+}
+
+/* 9. Inscrição */
+.inscricao {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  align-items: start;
+  gap: 64px;
+}
+
+.inscricao__subtitulo {
+  padding-top: 32px;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.inscricao__levar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+}
+
+.inscricao__levar li {
+  padding: 12px 16px;
+  background: #f6dccb;
+  border-radius: 12px;
+  color: #2a1811;
+}
+
+.ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  padding: 52px;
+  background: #ffffff;
+  border: 1px solid #eeddcf;
+  border-radius: 24px;
+}
+
+.ficha__linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label,
+.grupo legend {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 23px;
+  color: #3a2219;
+}
+
+.campo input:not([type="range"]),
+.campo select,
+.campo textarea {
+  width: 100%;
+  height: 50px;
+  padding: 12px 14px;
+  background: #fbf3ea;
+  border: 1px solid #eeddcf;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2a1811;
+}
+
+.campo input[type="date"] {
+  height: 52px;
+}
+
+.campo select {
+  height: 47px;
+  padding: 12px 14px 12px 18px;
+}
+
+.campo textarea {
+  height: 122px;
+  resize: vertical;
+}
+
+.campo input:hover,
+.campo select:hover,
+.campo textarea:hover {
+  border-color: #e3784a;
+}
+
+.campo input[type="range"] {
+  width: 100%;
+  margin: 2px 0;
+  accent-color: #3a2219;
+}
+
+.campo__dica {
+  font-size: 13px;
+  line-height: 20px;
+  color: #7a5e52;
+}
+
+.grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 10px;
+  padding: 0;
+  border: 0;
+}
+
+.grupo legend {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.opcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #eeddcf;
+  border-radius: 999px;
+  font-size: 15px;
+  line-height: 23px;
+  color: #2a1811;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.opcao:hover {
+  border-color: #e3784a;
+  background: #fbf3ea;
+}
+
+.opcao input {
+  margin: 0;
+  accent-color: #3a2219;
+}
+
+.ficha__termos {
+  display: flex;
+  padding: 16px 0 0;
+  border: 0;
+  border-top: 1px solid #eeddcf;
+  border-radius: 0;
+}
+
+.ficha__termos:hover {
+  background: transparent;
+  border-color: #eeddcf;
+}
+
+.ficha__termos a {
+  font-weight: 600;
+  text-decoration: underline;
+  color: #3a2219;
+}
+
+.ficha__termos a:hover {
+  color: #e3784a;
+}
+
+/* 10. Depoimentos */
+.depoimentos__grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+}
+
+.depoimento {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 42px;
+  background: #ffffff;
+  border: 1px solid #eeddcf;
+  border-radius: 24px;
+}
+
+.depoimento--destaque {
+  background: #e3784a;
+  border-color: #e3784a;
+}
+
+.depoimento__nota {
+  letter-spacing: 1.6px;
+  color: #3a2219;
+}
+
+.depoimento__texto {
+  flex-grow: 1;
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #2a1811;
+}
+
+.depoimento__autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 21px;
+  color: #7a5e52;
+}
+
+.depoimento__autor > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.depoimento__autor strong {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a2219;
+}
+
+.depoimento__avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: #f6dccb;
+  border-radius: 999px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.depoimento--destaque .depoimento__autor {
+  color: #3a2219;
+}
+
+.depoimento--destaque .depoimento__avatar {
+  background: #ffffff;
+}
+
+/* 11. Rodapé */
+.rodape {
+  padding-top: 94px;
+  background: #3a2219;
+  color: #f6dccb;
+}
+
+.rodape__colunas {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.rodape__titulo {
+  font-family: "Anton", sans-serif;
+  font-size: 22px;
+  line-height: 33px;
+  color: #fbf3ea;
+}
+
+.rodape__coluna--marca > p:not(.rodape__titulo) {
+  padding-top: 12px;
+}
+
+.rodape__coluna ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+}
+
+.rodape__coluna a {
+  color: #f6dccb;
+  transition: color 0.2s;
+}
+
+.rodape__coluna a:hover {
+  color: #e3784a;
+}
+
+.newsletter {
+  display: flex;
+  gap: 8px;
+  max-width: 360px;
+  padding-top: 20px;
+}
+
+.newsletter input {
+  flex-grow: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 10px 16px;
+  background: #fbf3ea;
+  border: 0;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2a1811;
+}
+
+.newsletter .btn {
+  height: 44px;
+}
+
+.rodape__marca {
+  font-family: "Anton", sans-serif;
+  font-size: 236px;
+  line-height: 212px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #e3784a;
+}
+
+.rodape__legal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0 28px;
+  border-top: 1px solid #7a5e52;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
